@@ -466,6 +466,21 @@ Script.prototype.setup = function(self)
       self.printer = peripheral.wrap(side3); end;
   end;
 end
+Script.prototype.forwardCheck = function(self) 
+  if (turtle.forward()) then 
+    do return true end;
+  end;
+  turtle.turnLeft();
+  if (turtle.forward()) then 
+    do return true end;
+  end;
+  turtle.turnLeft();
+  if (turtle.forward()) then 
+    do return true end;
+  end;
+  turtle.turnLeft();
+  do return false end
+end
 Script.prototype.task = function(self) 
   local _g = self:input();
   if (_g == nil) then 
@@ -488,6 +503,7 @@ Script.prototype.task = function(self)
         do return end;
       end;
       self.y = response;
+      self:forwardCheck();
       self:diamonds();
     elseif (_g1) == "update" then 
       os.reboot();else
