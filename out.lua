@@ -416,10 +416,29 @@ Script.prototype.task = function(self)
   _G.sleep(2);
 end
 Script.prototype.exit = function(self) 
-  shell.run("exit()");
   _G.os.exit(0);
 end
 Script.prototype.eject = function(self) 
+  local side = "left";
+  if (disk.isPresent(side)) then 
+    disk.eject(side);
+    do return end;
+  end;
+  local side1 = "right";
+  if (disk.isPresent(side1)) then 
+    disk.eject(side1);
+    do return end;
+  end;
+  local side2 = "up";
+  if (disk.isPresent(side2)) then 
+    disk.eject(side2);
+    do return end;
+  end;
+  local side3 = "down";
+  if (disk.isPresent(side3)) then 
+    disk.eject(side3);
+    do return end;
+  end;
 end
 Script.prototype.input = function(self) 
   _G.io.flush();
@@ -430,7 +449,7 @@ Script.prototype.input = function(self)
   do return read end
 end
 Script.prototype.update = function(self) 
-  __haxe_Log.trace("updater, pastebin code:", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=69,className="Script",methodName="update"}));
+  __haxe_Log.trace("updater, pastebin code:", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=75,className="Script",methodName="update"}));
 end
 Script.prototype.print = function(self,value) 
   _G.io.write(Std.string(value));
