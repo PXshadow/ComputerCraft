@@ -521,7 +521,7 @@ Script.prototype.up = function(self)
   if (turtle.up()) then 
     self.fuel = self.fuel - 1;
     local tmp = self;
-    tmp.y = tmp.y + -1;
+    tmp.y = tmp.y + 1;
     do return true end;
   end;
   do return false end
@@ -533,7 +533,7 @@ Script.prototype.down = function(self)
   if (turtle.down()) then 
     self.fuel = self.fuel - 1;
     local tmp = self;
-    tmp.y = tmp.y + 1;
+    tmp.y = tmp.y + -1;
     do return true end;
   end;
   do return false end
