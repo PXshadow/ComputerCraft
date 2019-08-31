@@ -507,7 +507,10 @@ Script.prototype.task = function(self)
         do return end;
       end;
       self.y = response;
-      self:forwardCheck();
+      if (not self:forwardCheck()) then 
+        self:print("failed forward check");
+        do return end;
+      end;
       self:diamonds();
     elseif (_g1) == "update" then 
       os.reboot();else
@@ -537,6 +540,7 @@ Script.prototype.diamonds = function(self)
     self:print(Std.string("fuel ") .. Std.string(self.fuel));
     turtle.digUp();
     turtle.digDown();
+    turtle.dig();
     if (not turtle.forward()) then 
       update = false;
     end;
