@@ -507,6 +507,7 @@ Script.prototype.diamonds = function(self)
       else
         self:up();
       end;
+      self:print(Std.string(Std.string(Std.string("y ") .. Std.string(self.y)) .. Std.string(" dif ")) .. Std.string(diff));
     else
       update = false;
     end;
