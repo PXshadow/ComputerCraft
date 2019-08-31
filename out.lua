@@ -537,10 +537,9 @@ Script.prototype.diamonds = function(self)
   end;
   update = true;
   while (self.fuel > 10) do 
-    self:print(Std.string("fuel ") .. Std.string(self.fuel));
     turtle.digUp();
     turtle.digDown();
-    turtle.dig();
+    self:print(Std.string(Std.string(Std.string("dig: ") .. Std.string(Std.string(turtle.dig()))) .. Std.string(" f: ")) .. Std.string(self.fuel));
     if (not turtle.forward()) then 
       update = false;
     end;
