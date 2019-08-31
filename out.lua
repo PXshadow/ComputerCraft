@@ -393,47 +393,52 @@ Script.new = function()
   return self
 end
 Script.super = function(self) 
+  self.driver = "";
   self:print("shadow craft\n");
   local type = "";
   local side = "left";
   if (peripheral.isPresent(side)) then 
     type = peripheral.getType(side);
-    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=36,className="Script",methodName="new"}));
+    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=37,className="Script",methodName="new"}));
     local type1 = type;
-    if (type1) == "modem" then 
-      self.network = peripheral.wrap(side);
+    if (type1) == "drive" then 
+      self.driver = side;
     elseif (type1) == "monitor" then 
-      self.monitor = peripheral.wrap(side); end;
+      self.monitor = peripheral.wrap(side);
+    elseif (type1) == "printer" then  end;
   end;
   local side1 = "right";
   if (peripheral.isPresent(side1)) then 
     type = peripheral.getType(side1);
-    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=36,className="Script",methodName="new"}));
+    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=37,className="Script",methodName="new"}));
     local type2 = type;
-    if (type2) == "modem" then 
-      self.network = peripheral.wrap(side1);
+    if (type2) == "drive" then 
+      self.driver = side1;
     elseif (type2) == "monitor" then 
-      self.monitor = peripheral.wrap(side1); end;
+      self.monitor = peripheral.wrap(side1);
+    elseif (type2) == "printer" then  end;
   end;
-  local side2 = "front";
+  local side2 = "top";
   if (peripheral.isPresent(side2)) then 
     type = peripheral.getType(side2);
-    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=36,className="Script",methodName="new"}));
+    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=37,className="Script",methodName="new"}));
     local type3 = type;
-    if (type3) == "modem" then 
-      self.network = peripheral.wrap(side2);
+    if (type3) == "drive" then 
+      self.driver = side2;
     elseif (type3) == "monitor" then 
-      self.monitor = peripheral.wrap(side2); end;
+      self.monitor = peripheral.wrap(side2);
+    elseif (type3) == "printer" then  end;
   end;
-  local side3 = "back";
+  local side3 = "bottom";
   if (peripheral.isPresent(side3)) then 
     type = peripheral.getType(side3);
-    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=36,className="Script",methodName="new"}));
+    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=37,className="Script",methodName="new"}));
     local type4 = type;
-    if (type4) == "modem" then 
-      self.network = peripheral.wrap(side3);
+    if (type4) == "drive" then 
+      self.driver = side3;
     elseif (type4) == "monitor" then 
-      self.monitor = peripheral.wrap(side3); end;
+      self.monitor = peripheral.wrap(side3);
+    elseif (type4) == "printer" then  end;
   end;
   self:task();
 end
@@ -461,26 +466,7 @@ Script.prototype.exit = function(self)
   _G.os.exit(0);
 end
 Script.prototype.eject = function(self) 
-  local side = "left";
-  if (disk.isPresent(side)) then 
-    disk.eject(side);
-    do return end;
-  end;
-  local side1 = "right";
-  if (disk.isPresent(side1)) then 
-    disk.eject(side1);
-    do return end;
-  end;
-  local side2 = "up";
-  if (disk.isPresent(side2)) then 
-    disk.eject(side2);
-    do return end;
-  end;
-  local side3 = "down";
-  if (disk.isPresent(side3)) then 
-    disk.eject(side3);
-    do return end;
-  end;
+  disk.eject(self.driver);
 end
 Script.prototype.input = function(self) 
   _G.io.flush();
@@ -491,7 +477,7 @@ Script.prototype.input = function(self)
   do return read end
 end
 Script.prototype.update = function(self) 
-  __haxe_Log.trace("updater, pastebin code:\n", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=97,className="Script",methodName="update"}));
+  __haxe_Log.trace("updater, pastebin code:\n", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=92,className="Script",methodName="update"}));
 end
 Script.prototype.print = function(self,value) 
   _G.io.write(Std.string(value));
