@@ -500,7 +500,7 @@ Script.prototype.diamonds = function(self)
   local update = true;
   local diff = 0;
   while (update) do 
-    diff = self.y - 11;
+    diff = self.y - 12;
     if (diff ~= 0) then 
       if (diff > 0) then 
         self:down();
@@ -509,6 +509,15 @@ Script.prototype.diamonds = function(self)
       end;
       self:print(Std.string(Std.string(Std.string("y ") .. Std.string(self.y)) .. Std.string(" dif ")) .. Std.string(diff));
     else
+      update = false;
+    end;
+  end;
+  update = true;
+  while (self.fuel > 10) do 
+    self:print(Std.string("fuel ") .. Std.string(self.fuel));
+    turtle.digUp();
+    turtle.digDown();
+    if (not turtle.forward()) then 
       update = false;
     end;
   end;
