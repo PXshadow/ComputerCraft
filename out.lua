@@ -415,7 +415,7 @@ Script.super = function(self)
     elseif (type2) == "monitor" then 
       self.monitor = peripheral.wrap(side1); end;
   end;
-  local side2 = "up";
+  local side2 = "front";
   if (peripheral.isPresent(side2)) then 
     type = peripheral.getType(side2);
     __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=36,className="Script",methodName="new"}));
@@ -425,7 +425,7 @@ Script.super = function(self)
     elseif (type3) == "monitor" then 
       self.monitor = peripheral.wrap(side2); end;
   end;
-  local side3 = "down";
+  local side3 = "back";
   if (peripheral.isPresent(side3)) then 
     type = peripheral.getType(side3);
     __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=36,className="Script",methodName="new"}));
