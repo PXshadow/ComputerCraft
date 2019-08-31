@@ -467,17 +467,21 @@ Script.prototype.setup = function(self)
   end;
 end
 Script.prototype.forwardCheck = function(self) 
+  self:print("check forward");
   if (turtle.forward()) then 
     do return true end;
   end;
+  self:print(Std.string("rotate ") .. Std.string(0));
   turtle.turnLeft();
   if (turtle.forward()) then 
     do return true end;
   end;
+  self:print(Std.string("rotate ") .. Std.string(1));
   turtle.turnLeft();
   if (turtle.forward()) then 
     do return true end;
   end;
+  self:print(Std.string("rotate ") .. Std.string(2));
   turtle.turnLeft();
   do return false end
 end
