@@ -393,6 +393,7 @@ Script.new = function()
   return self
 end
 Script.super = function(self) 
+  self:print("shadow craft");
   self:task();
 end
 Script.prototype = _hx_a();
@@ -449,7 +450,7 @@ Script.prototype.input = function(self)
   do return read end
 end
 Script.prototype.update = function(self) 
-  __haxe_Log.trace("updater, pastebin code:", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=75,className="Script",methodName="update"}));
+  __haxe_Log.trace("updater, pastebin code:", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=76,className="Script",methodName="update"}));
 end
 Script.prototype.print = function(self,value) 
   _G.io.write(Std.string(value));
