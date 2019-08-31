@@ -394,6 +394,47 @@ Script.new = function()
 end
 Script.super = function(self) 
   self:print("shadow craft\n");
+  local type = "";
+  local side = "left";
+  if (peripheral.isPresent(side)) then 
+    type = peripheral.getType(side);
+    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=36,className="Script",methodName="new"}));
+    local type1 = type;
+    if (type1) == "modem" then 
+      self.network = peripheral.wrap(side);
+    elseif (type1) == "monitor" then 
+      self.monitor = peripheral.wrap(side); end;
+  end;
+  local side1 = "right";
+  if (peripheral.isPresent(side1)) then 
+    type = peripheral.getType(side1);
+    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=36,className="Script",methodName="new"}));
+    local type2 = type;
+    if (type2) == "modem" then 
+      self.network = peripheral.wrap(side1);
+    elseif (type2) == "monitor" then 
+      self.monitor = peripheral.wrap(side1); end;
+  end;
+  local side2 = "up";
+  if (peripheral.isPresent(side2)) then 
+    type = peripheral.getType(side2);
+    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=36,className="Script",methodName="new"}));
+    local type3 = type;
+    if (type3) == "modem" then 
+      self.network = peripheral.wrap(side2);
+    elseif (type3) == "monitor" then 
+      self.monitor = peripheral.wrap(side2); end;
+  end;
+  local side3 = "down";
+  if (peripheral.isPresent(side3)) then 
+    type = peripheral.getType(side3);
+    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=36,className="Script",methodName="new"}));
+    local type4 = type;
+    if (type4) == "modem" then 
+      self.network = peripheral.wrap(side3);
+    elseif (type4) == "monitor" then 
+      self.monitor = peripheral.wrap(side3); end;
+  end;
   self:task();
 end
 Script.prototype = _hx_a();
@@ -406,9 +447,9 @@ Script.prototype.task = function(self)
     if (_g1) == "" then 
     elseif (_g1) == "eject" then 
       self:eject();
-      self:exit();
     elseif (_g1) == "exit" then 
       self:exit();
+    elseif (_g1) == "network" then 
     elseif (_g1) == "update" then 
       self:update();else
     self:print("task not found\n"); end;
@@ -450,7 +491,7 @@ Script.prototype.input = function(self)
   do return read end
 end
 Script.prototype.update = function(self) 
-  __haxe_Log.trace("updater, pastebin code:\n", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=76,className="Script",methodName="update"}));
+  __haxe_Log.trace("updater, pastebin code:\n", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=97,className="Script",methodName="update"}));
 end
 Script.prototype.print = function(self,value) 
   _G.io.write(Std.string(value));
