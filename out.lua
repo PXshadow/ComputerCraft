@@ -565,8 +565,8 @@ Script.prototype.inspect = function(self,dir)
   elseif (dir1) == 1 then 
     result = _hx_box_mr(_hx_table.pack(turtle.inspectDown()), {"successful", "result"}); end;
   self.detail = "";
-  if (result.successful) then 
-    if (not __lua_Boot.__instanceof(result.result, String)) then 
+  if (result.successful and (result.result ~= nil)) then 
+    if (__lua_Boot.__instanceof(result.result, cc.TurtleBlockDetail)) then 
       self.detail = (__lua_Boot.__cast(result.result , cc.TurtleBlockDetail)).name;
       local _this = self.detail;
       local startIndex = 10;
