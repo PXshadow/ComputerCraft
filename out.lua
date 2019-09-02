@@ -501,16 +501,43 @@ Script.prototype.task = function(self)
       if (not self:forwardCheck()) then 
         do return end;
       end;
-      self:axe();
+      while (true) do 
+        self.detail = _G.select(2, turtle.inspect());
+        local _this = self.detail.name;
+        local startIndex = #"minecraft:";
+        local endIndex = #self.detail.name;
+        if (endIndex == nil) then 
+          endIndex = #_this;
+        end;
+        if (endIndex < 0) then 
+          endIndex = 0;
+        end;
+        if (startIndex < 0) then 
+          startIndex = 0;
+        end;
+        if ((function() 
+          local _hx_1
+          if (endIndex < startIndex) then 
+          _hx_1 = _G.string.sub(_this, endIndex + 1, startIndex); else 
+          _hx_1 = _G.string.sub(_this, startIndex + 1, endIndex); end
+          return _hx_1
+        end )() == "log") then 
+          self:axe();
+        else
+          self:sleep(1);
+        end;
+      end;
     elseif (_g1) == "burn" then 
       fs.copy("shadowcraft.lua", "disk/startup.lua");
     elseif (_g1) == "eject" then 
       self:eject();
     elseif (_g1) == "exit" then 
       self:exit();
+    elseif (_g1) == "forward" then 
+      self:forwardCheck();
     elseif (_g1) == "inspect" then 
       self.detail = _G.select(2, turtle.inspect());
-      __haxe_Log.trace(Std.string("name ") .. Std.string(self.detail.name), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=94,className="Script",methodName="task"}));
+      __haxe_Log.trace(Std.string("name ") .. Std.string(self.detail.name), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=96,className="Script",methodName="task"}));
     elseif (_g1) == "td" then 
       self.fuel = turtle.getFuelLevel();
       self.mine = true;
@@ -533,6 +560,7 @@ Script.prototype.task = function(self)
   _G.sleep(2);
 end
 Script.prototype.axe = function(self) 
+  turtle.dig();
   turtle.forward();
   self.mined = true;
   while (self.mined) do 
@@ -544,9 +572,6 @@ Script.prototype.axe = function(self)
     end;
   end;
   turtle.back();
-  while (true) do 
-    self:sleep(1);
-  end;
 end
 Script.prototype.diamonds = function(self) 
   local update = true;
