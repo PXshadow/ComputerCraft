@@ -600,6 +600,7 @@ Script.prototype.inspect = function(self,dir)
   end;
 end
 Script.prototype.axe = function(self) 
+  self:print("start axe");
   redstone.setOutput("back", false);
   turtle.dig();
   turtle.forward();
@@ -611,7 +612,7 @@ Script.prototype.axe = function(self)
     if (turtle.down()) then 
       self.y = self.y - 1;
     else
-      __haxe_Log.trace(Std.string("can't go back down ") .. Std.string(self.y), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=187,className="Script",methodName="axe"}));
+      __haxe_Log.trace(Std.string("can't go back down ") .. Std.string(self.y), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=188,className="Script",methodName="axe"}));
     end;
   end;
   turtle.back();
