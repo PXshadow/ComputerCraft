@@ -514,7 +514,6 @@ Script.prototype.task = function(self)
       self.y = 0;
       redstone.setOutput("back", true);
       while (true) do 
-        self:inspect();
         self:print(Std.string("detail ") .. Std.string(self.detail));
         if (self.detail == "log") then 
           self:axe();
@@ -522,6 +521,7 @@ Script.prototype.task = function(self)
           turtle.place();
           self:sleep(1);
         end;
+        self:inspect();
       end;
     elseif (_g1) == "burn" then 
       fs.copy("shadowcraft.lua", "disk/startup.lua");
@@ -568,7 +568,6 @@ Script.prototype.inspect = function(self,dir)
   elseif (dir1) == 1 then 
     result = _hx_box_mr(_hx_table.pack(turtle.inspectDown()), {"successful", "result"}); end;
   self.detail = "";
-  __haxe_Log.trace(Std.string("result ") .. Std.string(result.result), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=159,className="Script",methodName="inspect"}));
   if (result.successful and (result.result ~= nil)) then 
     if (__lua_Boot.__instanceof(result.result, String)) then 
       self.detail = result.result;
@@ -612,7 +611,7 @@ Script.prototype.axe = function(self)
     if (turtle.down()) then 
       self.y = self.y - 1;
     else
-      __haxe_Log.trace(Std.string("can't go back down ") .. Std.string(self.y), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=188,className="Script",methodName="axe"}));
+      __haxe_Log.trace(Std.string("can't go back down ") .. Std.string(self.y), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=187,className="Script",methodName="axe"}));
     end;
   end;
   turtle.back();
