@@ -520,8 +520,8 @@ Script.prototype.task = function(self)
         else
           turtle.place();
           self:sleep(1);
+          self:inspect();
         end;
-        self:inspect();
       end;
     elseif (_g1) == "burn" then 
       fs.copy("shadowcraft.lua", "disk/startup.lua");
