@@ -512,7 +512,7 @@ Script.prototype.task = function(self)
         local tmp;
         if (self.detail ~= nil) then 
           local _this = self.detail.name;
-          local startIndex = #"minecraft:";
+          local startIndex = 10;
           local endIndex = #self.detail.name;
           if (endIndex == nil) then 
             endIndex = #_this;
