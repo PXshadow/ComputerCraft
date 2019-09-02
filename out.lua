@@ -478,21 +478,25 @@ end
 Script.prototype.forwardCheck = function(self) 
   self:print("check forward");
   if (turtle.forward()) then 
+    turtle.back();
     do return true end;
   end;
   self:print(Std.string("rotate ") .. Std.string(0));
   turtle.turnLeft();
   if (turtle.forward()) then 
+    turtle.back();
     do return true end;
   end;
   self:print(Std.string("rotate ") .. Std.string(1));
   turtle.turnLeft();
   if (turtle.forward()) then 
+    turtle.back();
     do return true end;
   end;
   self:print(Std.string("rotate ") .. Std.string(2));
   turtle.turnLeft();
   if (turtle.forward()) then 
+    turtle.back();
     do return true end;
   end;
   self:print(Std.string("rotate ") .. Std.string(3));
@@ -507,9 +511,6 @@ Script.prototype.task = function(self)
   else
     local _g1 = _g;
     if (_g1) == "axe" then 
-      if (not self:forwardCheck()) then 
-        do return end;
-      end;
       while (true) do 
         self:inspect();
         self:print(Std.string("detail ") .. Std.string(self.detail));
