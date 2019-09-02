@@ -510,7 +510,7 @@ Script.prototype.task = function(self)
       while (true) do 
         self.detail = _G.select(2, turtle.inspect());
         local tmp;
-        if (self.detail ~= nil) then 
+        if ((self.detail ~= nil) and (self.detail.name ~= nil)) then 
           local _this = self.detail.name;
           local startIndex = 10;
           local endIndex = #self.detail.name;
