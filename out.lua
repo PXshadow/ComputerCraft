@@ -488,6 +488,12 @@ Script.prototype.forwardCheck = function(self)
   end;
   self:print(Std.string("rotate ") .. Std.string(2));
   turtle.turnLeft();
+  if (turtle.forward()) then 
+    turtle.back();
+    do return true end;
+  end;
+  self:print(Std.string("rotate ") .. Std.string(3));
+  turtle.turnLeft();
   self:print("forward check failed");
   do return false end
 end
@@ -503,25 +509,31 @@ Script.prototype.task = function(self)
       end;
       while (true) do 
         self.detail = _G.select(2, turtle.inspect());
-        local _this = self.detail.name;
-        local startIndex = #"minecraft:";
-        local endIndex = #self.detail.name;
-        if (endIndex == nil) then 
-          endIndex = #_this;
+        local tmp;
+        if (self.detail ~= nil) then 
+          local _this = self.detail.name;
+          local startIndex = #"minecraft:";
+          local endIndex = #self.detail.name;
+          if (endIndex == nil) then 
+            endIndex = #_this;
+          end;
+          if (endIndex < 0) then 
+            endIndex = 0;
+          end;
+          if (startIndex < 0) then 
+            startIndex = 0;
+          end;
+          tmp = (function() 
+            local _hx_1
+            if (endIndex < startIndex) then 
+            _hx_1 = _G.string.sub(_this, endIndex + 1, startIndex); else 
+            _hx_1 = _G.string.sub(_this, startIndex + 1, endIndex); end
+            return _hx_1
+          end )() == "log";
+        else
+          tmp = false;
         end;
-        if (endIndex < 0) then 
-          endIndex = 0;
-        end;
-        if (startIndex < 0) then 
-          startIndex = 0;
-        end;
-        if ((function() 
-          local _hx_1
-          if (endIndex < startIndex) then 
-          _hx_1 = _G.string.sub(_this, endIndex + 1, startIndex); else 
-          _hx_1 = _G.string.sub(_this, startIndex + 1, endIndex); end
-          return _hx_1
-        end )() == "log") then 
+        if (tmp) then 
           self:axe();
         else
           self:sleep(1);
@@ -537,7 +549,9 @@ Script.prototype.task = function(self)
       self:forwardCheck();
     elseif (_g1) == "inspect" then 
       self.detail = _G.select(2, turtle.inspect());
-      __haxe_Log.trace(Std.string("name ") .. Std.string(self.detail.name), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=96,className="Script",methodName="task"}));
+      if (self.detail ~= nil) then 
+        __haxe_Log.trace(Std.string("name ") .. Std.string(self.detail.name), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=96,className="Script",methodName="task"}));
+      end;
     elseif (_g1) == "td" then 
       self.fuel = turtle.getFuelLevel();
       self.mine = true;
