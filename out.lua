@@ -509,6 +509,7 @@ Script.prototype.task = function(self)
       end;
       while (true) do 
         self.detail = _G.select(2, turtle.inspect());
+        self:print(Std.string("detail ") .. Std.string(Std.string(self.detail)));
         local tmp;
         if ((self.detail ~= nil) and (self.detail.name ~= nil)) then 
           local _this = self.detail.name;
