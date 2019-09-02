@@ -565,11 +565,16 @@ Script.prototype.inspect = function(self,dir)
   elseif (dir1) == 1 then 
     result = _hx_box_mr(_hx_table.pack(turtle.inspectDown()), {"successful", "result"}); end;
   self.detail = "";
+  __haxe_Log.trace(Std.string("result ") .. Std.string(result.result), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=155,className="Script",methodName="inspect"}));
   if (result.successful and (result.result ~= nil)) then 
     if (__lua_Boot.__instanceof(result.result, String)) then 
       self.detail = result.result;
     else
-      self.detail = (__lua_Boot.__cast(result.result , cc.TurtleBlockDetail)).name;
+      local block = result.result;
+      if (block == nil) then 
+        do return end;
+      end;
+      self.detail = block.name;
       local _this = self.detail;
       local startIndex = 10;
       local endIndex = #self.detail;
@@ -1021,13 +1026,6 @@ __lua_Boot.isArray = function(o)
     end;
   else
     do return false end;
-  end;
-end
-__lua_Boot.__cast = function(o,t) 
-  if ((o == nil) or __lua_Boot.__instanceof(o, t)) then 
-    do return o end;
-  else
-    _G.error(Std.string(Std.string(Std.string("Cannot cast ") .. Std.string(Std.string(o))) .. Std.string(" to ")) .. Std.string(Std.string(t)),0);
   end;
 end
 __lua_Boot.printEnum = function(o,s) 
