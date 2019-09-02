@@ -608,9 +608,11 @@ Script.prototype.axe = function(self)
   while (self.mined) do 
     self:up();
   end;
-  while (self.y >= 0) do 
-    if (not turtle.down()) then 
-      self:print(Std.string("can't go back down y: ") .. Std.string(self.y));
+  while (self.y > 0) do 
+    if (turtle.down()) then 
+      self.y = self.y - 1;
+    else
+      __haxe_Log.trace(Std.string("can't go back down ") .. Std.string(self.y), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=188,className="Script",methodName="axe"}));
     end;
   end;
   turtle.back();
