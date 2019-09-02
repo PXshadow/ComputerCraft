@@ -57,6 +57,8 @@ local String = _hx_e()
 local Std = _hx_e()
 __haxe_Log = _hx_e()
 __lua_Boot = _hx_e()
+__lua_UserData = _hx_e()
+__lua_Thread = _hx_e()
 
 local _hx_bind, _hx_bit, _hx_staticToInstance, _hx_funcToField, _hx_maxn, _hx_print, _hx_apply_self, _hx_box_mr, _hx_bit_clamp, _hx_table, _hx_bit_raw
 local _hx_pcall_default = {};
@@ -70,6 +72,7 @@ end
 Array.super = function(self) 
   _hx_tab_array(self, 0);
 end
+Array.__name__ = true
 Array.prototype = _hx_a();
 Array.prototype.concat = function(self,a) 
   local _g = _hx_tab_array({}, 0);
@@ -382,7 +385,10 @@ Array.prototype.resize = function(self,len)
   end;
 end
 
+Array.prototype.__class__ =  Array
+
 Main.new = {}
+Main.__name__ = true
 Main.main = function() 
   Script.new();
 end
@@ -397,25 +403,26 @@ Script.super = function(self)
   self.mined = false;
   self.mine = true;
   self.y = 0;
-  self.detail = nil;
+  self.detail = "";
   self.printer = nil;
   self.driver = "";
   self:print("shadow craft\n");
   self:setup();
   self:task();
 end
+Script.__name__ = true
 Script.prototype = _hx_a();
 Script.prototype.setup = function(self) 
   local type = "";
   local side = "left";
   if (peripheral.isPresent(side)) then 
     type = peripheral.getType(side);
-    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=56,className="Script",methodName="setup"}));
+    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=57,className="Script",methodName="setup"}));
     local type1 = type;
     if (type1) == "drive" then 
       self.driver = side;
     elseif (type1) == "modem" then 
-      __haxe_Log.trace("network open", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=66,className="Script",methodName="setup"}));
+      __haxe_Log.trace("network open", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=67,className="Script",methodName="setup"}));
       rednet.open(side);
     elseif (type1) == "monitor" then 
       self.monitor = peripheral.wrap(side);
@@ -425,12 +432,12 @@ Script.prototype.setup = function(self)
   local side1 = "right";
   if (peripheral.isPresent(side1)) then 
     type = peripheral.getType(side1);
-    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=56,className="Script",methodName="setup"}));
+    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=57,className="Script",methodName="setup"}));
     local type2 = type;
     if (type2) == "drive" then 
       self.driver = side1;
     elseif (type2) == "modem" then 
-      __haxe_Log.trace("network open", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=66,className="Script",methodName="setup"}));
+      __haxe_Log.trace("network open", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=67,className="Script",methodName="setup"}));
       rednet.open(side1);
     elseif (type2) == "monitor" then 
       self.monitor = peripheral.wrap(side1);
@@ -440,12 +447,12 @@ Script.prototype.setup = function(self)
   local side2 = "top";
   if (peripheral.isPresent(side2)) then 
     type = peripheral.getType(side2);
-    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=56,className="Script",methodName="setup"}));
+    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=57,className="Script",methodName="setup"}));
     local type3 = type;
     if (type3) == "drive" then 
       self.driver = side2;
     elseif (type3) == "modem" then 
-      __haxe_Log.trace("network open", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=66,className="Script",methodName="setup"}));
+      __haxe_Log.trace("network open", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=67,className="Script",methodName="setup"}));
       rednet.open(side2);
     elseif (type3) == "monitor" then 
       self.monitor = peripheral.wrap(side2);
@@ -455,12 +462,12 @@ Script.prototype.setup = function(self)
   local side3 = "bottom";
   if (peripheral.isPresent(side3)) then 
     type = peripheral.getType(side3);
-    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=56,className="Script",methodName="setup"}));
+    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=57,className="Script",methodName="setup"}));
     local type4 = type;
     if (type4) == "drive" then 
       self.driver = side3;
     elseif (type4) == "modem" then 
-      __haxe_Log.trace("network open", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=66,className="Script",methodName="setup"}));
+      __haxe_Log.trace("network open", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=67,className="Script",methodName="setup"}));
       rednet.open(side3);
     elseif (type4) == "monitor" then 
       self.monitor = peripheral.wrap(side3);
@@ -508,33 +515,9 @@ Script.prototype.task = function(self)
         do return end;
       end;
       while (true) do 
-        self.detail = _G.select(2, turtle.inspect());
-        self:print(Std.string("detail ") .. Std.string(Std.string(self.detail)));
-        local tmp;
-        if ((self.detail ~= nil) and (self.detail.name ~= nil)) then 
-          local _this = self.detail.name;
-          local startIndex = 10;
-          local endIndex = #self.detail.name;
-          if (endIndex == nil) then 
-            endIndex = #_this;
-          end;
-          if (endIndex < 0) then 
-            endIndex = 0;
-          end;
-          if (startIndex < 0) then 
-            startIndex = 0;
-          end;
-          tmp = (function() 
-            local _hx_1
-            if (endIndex < startIndex) then 
-            _hx_1 = _G.string.sub(_this, endIndex + 1, startIndex); else 
-            _hx_1 = _G.string.sub(_this, startIndex + 1, endIndex); end
-            return _hx_1
-          end )() == "log";
-        else
-          tmp = false;
-        end;
-        if (tmp) then 
+        self:inspect();
+        self:print(Std.string("detail ") .. Std.string(self.detail));
+        if (self.detail == "log") then 
           self:axe();
         else
           self:sleep(1);
@@ -549,10 +532,8 @@ Script.prototype.task = function(self)
     elseif (_g1) == "forward" then 
       self:forwardCheck();
     elseif (_g1) == "inspect" then 
-      self.detail = _G.select(2, turtle.inspect());
-      if (self.detail ~= nil) then 
-        __haxe_Log.trace(Std.string("name ") .. Std.string(self.detail.name), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=96,className="Script",methodName="task"}));
-      end;
+      self:inspect();
+      __haxe_Log.trace(Std.string("name ") .. Std.string(self.detail), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=97,className="Script",methodName="task"}));
     elseif (_g1) == "td" then 
       self.fuel = turtle.getFuelLevel();
       self.mine = true;
@@ -573,6 +554,44 @@ Script.prototype.task = function(self)
   end;
   self:task();
   _G.sleep(2);
+end
+Script.prototype.inspect = function(self,dir) 
+  if (dir == nil) then 
+    dir = 0;
+  end;
+  local result = nil;
+  local dir1 = dir;
+  if (dir1) == -1 then 
+    result = _hx_box_mr(_hx_table.pack(turtle.inspectUp()), {"successful", "result"});
+  elseif (dir1) == 0 then 
+    result = _hx_box_mr(_hx_table.pack(turtle.inspect()), {"successful", "result"});
+  elseif (dir1) == 1 then 
+    result = _hx_box_mr(_hx_table.pack(turtle.inspectDown()), {"successful", "result"}); end;
+  self.detail = "";
+  if (result.successful) then 
+    if (not __lua_Boot.__instanceof(result.result, String)) then 
+      self.detail = (__lua_Boot.__cast(result.result , cc.TurtleBlockDetail)).name;
+      local _this = self.detail;
+      local startIndex = 10;
+      local endIndex = #self.detail;
+      if (endIndex == nil) then 
+        endIndex = #_this;
+      end;
+      if (endIndex < 0) then 
+        endIndex = 0;
+      end;
+      if (startIndex < 0) then 
+        startIndex = 0;
+      end;
+      self.detail = (function() 
+        local _hx_1
+        if (endIndex < startIndex) then 
+        _hx_1 = _G.string.sub(_this, endIndex + 1, startIndex); else 
+        _hx_1 = _G.string.sub(_this, startIndex + 1, endIndex); end
+        return _hx_1
+      end )();
+    end;
+  end;
 end
 Script.prototype.axe = function(self) 
   turtle.dig();
@@ -664,7 +683,10 @@ Script.prototype.print = function(self,value)
   _G.io.flush();
 end
 
+Script.prototype.__class__ =  Script
+
 Math.new = {}
+Math.__name__ = true
 Math.isNaN = function(f) 
   do return f ~= f end;
 end
@@ -691,6 +713,7 @@ String.new = function(string)
 end
 String.super = function(self,string) 
 end
+String.__name__ = true
 String.__index = function(s,k) 
   if (k == "length") then 
     do return _G.string.len(s) end;
@@ -847,7 +870,10 @@ String.prototype.substr = function(self,pos,len)
   do return _G.string.sub(self, pos + 1, pos + len) end
 end
 
+String.prototype.__class__ =  String
+
 Std.new = {}
+Std.__name__ = true
 Std.string = function(s) 
   do return __lua_Boot.__string_rec(s) end;
 end
@@ -891,6 +917,7 @@ Std.parseInt = function(x)
 end
 
 __haxe_Log.new = {}
+__haxe_Log.__name__ = true
 __haxe_Log.formatOutput = function(v,infos) 
   local str = Std.string(v);
   if (infos == nil) then 
@@ -914,6 +941,78 @@ __haxe_Log.trace = function(v,infos)
 end
 
 __lua_Boot.new = {}
+__lua_Boot.__name__ = true
+__lua_Boot.__instanceof = function(o,cl) 
+  if (cl == nil) then 
+    do return false end;
+  end;
+  local cl1 = cl;
+  if (cl1) == Array then 
+    do return __lua_Boot.isArray(o) end;
+  elseif (cl1) == Bool then 
+    do return _G.type(o) == "boolean" end;
+  elseif (cl1) == Dynamic then 
+    do return o ~= nil end;
+  elseif (cl1) == Float then 
+    do return _G.type(o) == "number" end;
+  elseif (cl1) == Int then 
+    if (_G.type(o) == "number") then 
+      do return _hx_bit_clamp(o) == o end;
+    else
+      do return false end;
+    end;
+  elseif (cl1) == String then 
+    do return _G.type(o) == "string" end;
+  elseif (cl1) == _G.table then 
+    do return _G.type(o) == "table" end;
+  elseif (cl1) == __lua_Thread then 
+    do return _G.type(o) == "thread" end;
+  elseif (cl1) == __lua_UserData then 
+    do return _G.type(o) == "userdata" end;else
+  if (((o ~= nil) and (_G.type(o) == "table")) and (_G.type(cl) == "table")) then 
+    local tmp;
+    if (__lua_Boot.__instanceof(o, Array)) then 
+      tmp = Array;
+    else
+      if (__lua_Boot.__instanceof(o, String)) then 
+        tmp = String;
+      else
+        local cl2 = o.__class__;
+        tmp = (function() 
+          local _hx_1
+          if (cl2 ~= nil) then 
+          _hx_1 = cl2; else 
+          _hx_1 = nil; end
+          return _hx_1
+        end )();
+      end;
+    end;
+    if (__lua_Boot.extendsOrImplements(tmp, cl)) then 
+      do return true end;
+    end;
+    if ((function() 
+      local _hx_2
+      if (cl == Class) then 
+      _hx_2 = o.__name__ ~= nil; else 
+      _hx_2 = false; end
+      return _hx_2
+    end )()) then 
+      do return true end;
+    end;
+    if ((function() 
+      local _hx_3
+      if (cl == Enum) then 
+      _hx_3 = o.__ename__ ~= nil; else 
+      _hx_3 = false; end
+      return _hx_3
+    end )()) then 
+      do return true end;
+    end;
+    do return o.__enum__ == cl end;
+  else
+    do return false end;
+  end; end;
+end
 __lua_Boot.isArray = function(o) 
   if (_G.type(o) == "table") then 
     if ((o.__enum__ == nil) and (_G.getmetatable(o) ~= nil)) then 
@@ -923,6 +1022,13 @@ __lua_Boot.isArray = function(o)
     end;
   else
     do return false end;
+  end;
+end
+__lua_Boot.__cast = function(o,t) 
+  if ((o == nil) or __lua_Boot.__instanceof(o, t)) then 
+    do return o end;
+  else
+    _G.error(Std.string(Std.string(Std.string("Cannot cast ") .. Std.string(Std.string(o))) .. Std.string(" to ")) .. Std.string(Std.string(t)),0);
   end;
 end
 __lua_Boot.printEnum = function(o,s) 
@@ -1043,6 +1149,29 @@ __lua_Boot.__string_rec = function(o,s)
     end;else
   _G.error("Unknown Lua type",0); end;
 end
+__lua_Boot.extendsOrImplements = function(cl1,cl2) 
+  if ((cl1 == nil) or (cl2 == nil)) then 
+    do return false end;
+  else
+    if (cl1 == cl2) then 
+      do return true end;
+    else
+      if (cl1.__interfaces__ ~= nil) then 
+        local intf = cl1.__interfaces__;
+        local _g = 1;
+        local _g1 = _hx_table.maxn(intf) + 1;
+        while (_g < _g1) do 
+          _g = _g + 1;
+          local i = _g - 1;
+          if (__lua_Boot.extendsOrImplements(intf[i], cl2)) then 
+            do return true end;
+          end;
+        end;
+      end;
+    end;
+  end;
+  do return __lua_Boot.extendsOrImplements(cl1.__super__, cl2) end;
+end
 __lua_Boot.fieldIterator = function(o) 
   if (_G.type(o) ~= "table") then 
     do return _hx_o({__fields__={next=true,hasNext=true},next=function(self) 
@@ -1074,6 +1203,12 @@ __lua_Boot.fieldIterator = function(o)
     do return cur_val ~= nil end;
   end}) end;
 end
+
+__lua_UserData.new = {}
+__lua_UserData.__name__ = true
+
+__lua_Thread.new = {}
+__lua_Thread.__name__ = true
 _hx_bit_clamp = function(v)
   if v <= 2147483647 and v >= -2147483648 then
     if v > 0 then return _G.math.floor(v)
@@ -1102,9 +1237,32 @@ _hx_array_mt.__index = Array.prototype
 local _hx_static_init = function()
   __lua_Boot.hiddenFields = {__id__=true, hx__closures=true, super=true, prototype=true, __fields__=true, __ifields__=true, __class__=true, __properties__=true}
   
+  String.__name__ = true;
+  Array.__name__ = true;
 end
 
 _hx_print = print or (function() end)
+
+_hx_box_mr = function(x,nt)
+    res = _hx_o({__fields__={}})
+    for i,v in ipairs(nt) do
+      res[v] = x[i]
+    end
+    return res
+end
+
+_hx_table = {}
+_hx_table.pack = _G.table.pack or function(...)
+    return {...}
+end
+_hx_table.unpack = _G.table.unpack or _G.unpack
+_hx_table.maxn = _G.table.maxn or function(t)
+  local maxn=0;
+  for i in pairs(t) do
+    maxn=type(i)=='number'and i>maxn and i or maxn
+  end
+  return maxn
+end;
 
 _hx_wrap_if_string_field = function(o, fld)
   if _G.type(o) == 'string' then
