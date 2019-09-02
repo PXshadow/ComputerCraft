@@ -566,10 +566,9 @@ Script.prototype.inspect = function(self,dir)
     result = _hx_box_mr(_hx_table.pack(turtle.inspectDown()), {"successful", "result"}); end;
   self.detail = "";
   if (result.successful and (result.result ~= nil)) then 
-    if (__lua_Boot.__instanceof(result.result, cc.TurtleBlockDetail)) then 
-      self:print("attempt");
-      self:print(Std.string("result ") .. Std.string(result.result));
-    end;
+    self:print("attempt");
+    self:print(Std.string("result ") .. Std.string(result.result));
+    self:print(Std.string("string ") .. Std.string(Std.string(__lua_Boot.__instanceof(result.result, String))));
   end;
 end
 Script.prototype.axe = function(self) 
