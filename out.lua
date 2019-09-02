@@ -417,12 +417,12 @@ Script.prototype.setup = function(self)
   local side = "left";
   if (peripheral.isPresent(side)) then 
     type = peripheral.getType(side);
-    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=57,className="Script",methodName="setup"}));
+    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=59,className="Script",methodName="setup"}));
     local type1 = type;
     if (type1) == "drive" then 
       self.driver = side;
     elseif (type1) == "modem" then 
-      __haxe_Log.trace("network open", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=67,className="Script",methodName="setup"}));
+      __haxe_Log.trace("network open", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=69,className="Script",methodName="setup"}));
       rednet.open(side);
     elseif (type1) == "monitor" then 
       self.monitor = peripheral.wrap(side);
@@ -432,12 +432,12 @@ Script.prototype.setup = function(self)
   local side1 = "right";
   if (peripheral.isPresent(side1)) then 
     type = peripheral.getType(side1);
-    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=57,className="Script",methodName="setup"}));
+    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=59,className="Script",methodName="setup"}));
     local type2 = type;
     if (type2) == "drive" then 
       self.driver = side1;
     elseif (type2) == "modem" then 
-      __haxe_Log.trace("network open", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=67,className="Script",methodName="setup"}));
+      __haxe_Log.trace("network open", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=69,className="Script",methodName="setup"}));
       rednet.open(side1);
     elseif (type2) == "monitor" then 
       self.monitor = peripheral.wrap(side1);
@@ -447,12 +447,12 @@ Script.prototype.setup = function(self)
   local side2 = "top";
   if (peripheral.isPresent(side2)) then 
     type = peripheral.getType(side2);
-    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=57,className="Script",methodName="setup"}));
+    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=59,className="Script",methodName="setup"}));
     local type3 = type;
     if (type3) == "drive" then 
       self.driver = side2;
     elseif (type3) == "modem" then 
-      __haxe_Log.trace("network open", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=67,className="Script",methodName="setup"}));
+      __haxe_Log.trace("network open", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=69,className="Script",methodName="setup"}));
       rednet.open(side2);
     elseif (type3) == "monitor" then 
       self.monitor = peripheral.wrap(side2);
@@ -462,12 +462,12 @@ Script.prototype.setup = function(self)
   local side3 = "bottom";
   if (peripheral.isPresent(side3)) then 
     type = peripheral.getType(side3);
-    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=57,className="Script",methodName="setup"}));
+    __haxe_Log.trace(Std.string("type ") .. Std.string(type), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=59,className="Script",methodName="setup"}));
     local type4 = type;
     if (type4) == "drive" then 
       self.driver = side3;
     elseif (type4) == "modem" then 
-      __haxe_Log.trace("network open", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=67,className="Script",methodName="setup"}));
+      __haxe_Log.trace("network open", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=69,className="Script",methodName="setup"}));
       rednet.open(side3);
     elseif (type4) == "monitor" then 
       self.monitor = peripheral.wrap(side3);
@@ -530,7 +530,7 @@ Script.prototype.task = function(self)
       self:forwardCheck();
     elseif (_g1) == "inspect" then 
       self:inspect();
-      __haxe_Log.trace(Std.string("name ") .. Std.string(self.detail), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=97,className="Script",methodName="task"}));
+      __haxe_Log.trace(Std.string("name ") .. Std.string(self.detail), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=99,className="Script",methodName="task"}));
     elseif (_g1) == "td" then 
       self.fuel = turtle.getFuelLevel();
       self.mine = true;
@@ -566,9 +566,30 @@ Script.prototype.inspect = function(self,dir)
     result = _hx_box_mr(_hx_table.pack(turtle.inspectDown()), {"successful", "result"}); end;
   self.detail = "";
   if (result.successful and (result.result ~= nil)) then 
-    self:print("attempt");
-    self:print(Std.string("result ") .. Std.string(result.result));
-    self:print(Std.string("string ") .. Std.string(Std.string(__lua_Boot.__instanceof(result.result, String))));
+    if (__lua_Boot.__instanceof(result.result, String)) then 
+      self.detail = result.result;
+    else
+      self.detail = (__lua_Boot.__cast(result , cc.TurtleBlockDetail)).name;
+      local _this = self.detail;
+      local startIndex = 10;
+      local endIndex = #self.detail;
+      if (endIndex == nil) then 
+        endIndex = #_this;
+      end;
+      if (endIndex < 0) then 
+        endIndex = 0;
+      end;
+      if (startIndex < 0) then 
+        startIndex = 0;
+      end;
+      self.detail = (function() 
+        local _hx_1
+        if (endIndex < startIndex) then 
+        _hx_1 = _G.string.sub(_this, endIndex + 1, startIndex); else 
+        _hx_1 = _G.string.sub(_this, startIndex + 1, endIndex); end
+        return _hx_1
+      end )();
+    end;
   end;
 end
 Script.prototype.axe = function(self) 
@@ -1000,6 +1021,13 @@ __lua_Boot.isArray = function(o)
     end;
   else
     do return false end;
+  end;
+end
+__lua_Boot.__cast = function(o,t) 
+  if ((o == nil) or __lua_Boot.__instanceof(o, t)) then 
+    do return o end;
+  else
+    _G.error(Std.string(Std.string(Std.string("Cannot cast ") .. Std.string(Std.string(o))) .. Std.string(" to ")) .. Std.string(Std.string(t)),0);
   end;
 end
 __lua_Boot.printEnum = function(o,s) 
