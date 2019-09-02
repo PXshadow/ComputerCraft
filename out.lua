@@ -511,6 +511,8 @@ Script.prototype.task = function(self)
   else
     local _g1 = _g;
     if (_g1) == "axe" then 
+      self.y = 0;
+      redstone.setOutput("back", true);
       while (true) do 
         self:inspect();
         self:print(Std.string("detail ") .. Std.string(self.detail));
@@ -565,7 +567,7 @@ Script.prototype.inspect = function(self,dir)
   elseif (dir1) == 1 then 
     result = _hx_box_mr(_hx_table.pack(turtle.inspectDown()), {"successful", "result"}); end;
   self.detail = "";
-  __haxe_Log.trace(Std.string("result ") .. Std.string(result.result), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=155,className="Script",methodName="inspect"}));
+  __haxe_Log.trace(Std.string("result ") .. Std.string(result.result), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=158,className="Script",methodName="inspect"}));
   if (result.successful and (result.result ~= nil)) then 
     if (__lua_Boot.__instanceof(result.result, String)) then 
       self.detail = result.result;
@@ -598,15 +600,16 @@ Script.prototype.inspect = function(self,dir)
   end;
 end
 Script.prototype.axe = function(self) 
+  redstone.setOutput("back", false);
   turtle.dig();
   turtle.forward();
   self.mined = true;
   while (self.mined) do 
     self:up();
   end;
-  while (self.y > 0) do 
+  while (self.y >= 0) do 
     if (not turtle.down()) then 
-      self:print("can't go back down");
+      self:print(Std.string("can't go back down y: ") .. Std.string(self.y));
     end;
   end;
   turtle.back();
