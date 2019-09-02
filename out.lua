@@ -569,7 +569,7 @@ Script.prototype.inspect = function(self,dir)
     if (__lua_Boot.__instanceof(result.result, String)) then 
       self.detail = result.result;
     else
-      self.detail = (__lua_Boot.__cast(result , cc.TurtleBlockDetail)).name;
+      self.detail = (__lua_Boot.__cast(result.result , cc.TurtleBlockDetail)).name;
       local _this = self.detail;
       local startIndex = 10;
       local endIndex = #self.detail;
