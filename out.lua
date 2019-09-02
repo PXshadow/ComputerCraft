@@ -519,6 +519,7 @@ Script.prototype.task = function(self)
         if (self.detail == "log") then 
           self:axe();
         else
+          turtle.place();
           self:sleep(1);
         end;
       end;
@@ -567,7 +568,7 @@ Script.prototype.inspect = function(self,dir)
   elseif (dir1) == 1 then 
     result = _hx_box_mr(_hx_table.pack(turtle.inspectDown()), {"successful", "result"}); end;
   self.detail = "";
-  __haxe_Log.trace(Std.string("result ") .. Std.string(result.result), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=158,className="Script",methodName="inspect"}));
+  __haxe_Log.trace(Std.string("result ") .. Std.string(result.result), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=159,className="Script",methodName="inspect"}));
   if (result.successful and (result.result ~= nil)) then 
     if (__lua_Boot.__instanceof(result.result, String)) then 
       self.detail = result.result;
