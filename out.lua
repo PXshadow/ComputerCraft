@@ -567,6 +567,7 @@ Script.prototype.inspect = function(self,dir)
   self.detail = "";
   if (result.successful and (result.result ~= nil)) then 
     if (__lua_Boot.__instanceof(result.result, cc.TurtleBlockDetail)) then 
+      self:print(Std.string("result ") .. Std.string(result.result));
       self.detail = (__lua_Boot.__cast(result.result , cc.TurtleBlockDetail)).name;
       local _this = self.detail;
       local startIndex = 10;
