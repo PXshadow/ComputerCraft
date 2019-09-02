@@ -397,6 +397,7 @@ Script.super = function(self)
   self.mined = false;
   self.mine = true;
   self.y = 0;
+  self.detail = nil;
   self.printer = nil;
   self.driver = "";
   self:print("shadow craft\n");
@@ -508,7 +509,8 @@ Script.prototype.task = function(self)
     elseif (_g1) == "exit" then 
       self:exit();
     elseif (_g1) == "inspect" then 
-      self:print(Std.string("inspect ") .. Std.string(_G.select(2, turtle.inspect())));
+      self.detail = _G.select(2, turtle.inspect());
+      __haxe_Log.trace(Std.string("name ") .. Std.string(self.detail.name), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Main.hx",lineNumber=94,className="Script",methodName="task"}));
     elseif (_g1) == "td" then 
       self.fuel = turtle.getFuelLevel();
       self.mine = true;
