@@ -567,27 +567,8 @@ Script.prototype.inspect = function(self,dir)
   self.detail = "";
   if (result.successful and (result.result ~= nil)) then 
     if (__lua_Boot.__instanceof(result.result, cc.TurtleBlockDetail)) then 
+      self:print("attempt");
       self:print(Std.string("result ") .. Std.string(result.result));
-      self.detail = (__lua_Boot.__cast(result.result , cc.TurtleBlockDetail)).name;
-      local _this = self.detail;
-      local startIndex = 10;
-      local endIndex = #self.detail;
-      if (endIndex == nil) then 
-        endIndex = #_this;
-      end;
-      if (endIndex < 0) then 
-        endIndex = 0;
-      end;
-      if (startIndex < 0) then 
-        startIndex = 0;
-      end;
-      self.detail = (function() 
-        local _hx_1
-        if (endIndex < startIndex) then 
-        _hx_1 = _G.string.sub(_this, endIndex + 1, startIndex); else 
-        _hx_1 = _G.string.sub(_this, startIndex + 1, endIndex); end
-        return _hx_1
-      end )();
     end;
   end;
 end
@@ -1020,13 +1001,6 @@ __lua_Boot.isArray = function(o)
     end;
   else
     do return false end;
-  end;
-end
-__lua_Boot.__cast = function(o,t) 
-  if ((o == nil) or __lua_Boot.__instanceof(o, t)) then 
-    do return o end;
-  else
-    _G.error(Std.string(Std.string(Std.string("Cannot cast ") .. Std.string(Std.string(o))) .. Std.string(" to ")) .. Std.string(Std.string(t)),0);
   end;
 end
 __lua_Boot.printEnum = function(o,s) 
